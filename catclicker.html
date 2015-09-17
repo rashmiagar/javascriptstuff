@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      function myfunc(){
+        var elem = document.getElementById("catphoto");
+        var count=0;
+        elem.addEventListener('click', function(){
+          count = count +1;
+          var elem2 = document.getElementById("counter");
+          elem2.innerHTML = count;
+        }, false);
+      }
+    </script>
+  </head>
+  <body onload="myfunc()">
+    <div id="catphoto">
+    <img src="cat.jpg"/>
+    <span id="counter">0 times</span>
+    </div>
+  </body>
+</html>

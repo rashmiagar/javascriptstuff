@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <style>
+      a 
+    </style>
+    <script type="text/javascript">
+      function myfunc(){
+        var img_elems = document.getElementsByTagName('img');
+
+        //var elem =  document.getElementById("cat1").getElementsByTagName('img')[0];
+        var cat1_name="cat1", cat2_name="cat2";
+        document.getElementById("cat1_name").innerHTML = cat1_name;
+        document.getElementById("cat2_name").innerHTML = cat2_name;
+        var count = [0,0];
+        
+        for(i=0, j= img_elems.length; i <j; i++){
+          img_elems[i].addEventListener('click', function(event){
+            var index = event.target.parentElement.id.replace("cat", "");
+            count[index-1] = count[index-1]+1;
+            var elem2 = document.getElementById("counter"+index);
+            elem2.innerHTML = count[index-1]; 
+        }, false);
+       }
+      }
+    </script>
+  </head>
+  <body onload="myfunc()">
+    <div id="sidebar" style="float:left;width:150px">
+      <ul>
+        <li><a href="#cat1"> cat1</a></li>
+        <li><a href="#cat2">cat2</a></li>
+        <li><a href="">cat3</a></li>
+        <li><a href="">cat4</a></li>
+        <li><a href="">cat5</a></li>
+        <li><a href="">cat6</a></li>
+      </ul>
+    </div>
+    <section id="displayarea" style="margin-left:150px"></section>
+    
+    <a name="cat1">
+    <div id="cat1">
+      <h1 id="cat1_name"></h1>
+      <img src="cat.jpg"/>
+      <span id="counter1">0 times</span>
+    </div>
+  </a>
+  <a name="cat2">
+    <div id="cat2">
+      <h2 id="cat2_name"></h2>
+      <img src="cat2.jpg"/>
+      <span id="counter2">0 times</span>
+    </div>
+  </a>
+  </body>
+</html>
