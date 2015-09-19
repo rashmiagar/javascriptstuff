@@ -1,17 +1,29 @@
 <html>
   <head>
     <style>
-      a 
+      #container {
+        margin-left: 150px;
+        border: solid 2px;
+        /*width: 500px;*/
+      }
+      #container div {
+        display: none;
+      }
     </style>
     <script type="text/javascript">
       function myfunc(){
         var img_elems = document.getElementsByTagName('img');
 
         //var elem =  document.getElementById("cat1").getElementsByTagName('img')[0];
-        var cat1_name="cat1", cat2_name="cat2";
+        var cat1_name="cat1", cat2_name="cat2", cat3_name = "cat3", cat4_name = "cat4", cat5_name="cat5", cat6_name="cat6";
         document.getElementById("cat1_name").innerHTML = cat1_name;
         document.getElementById("cat2_name").innerHTML = cat2_name;
-        var count = [0,0];
+        document.getElementById("cat3_name").innerHTML = cat3_name;
+        document.getElementById("cat4_name").innerHTML = cat4_name;
+        document.getElementById("cat5_name").innerHTML = cat5_name;
+        document.getElementById("cat6_name").innerHTML = cat6_name;
+
+        var count = [0,0,0,0,0,0];
         
         for(i=0, j= img_elems.length; i <j; i++){
           img_elems[i].addEventListener('click', function(event){
@@ -21,35 +33,73 @@
             elem2.innerHTML = count[index-1]; 
         }, false);
        }
+      };
+
+      function clickHandler() {
+        var id = this.getAttribute("data-href");
+        var items =document.getElementById("container").children;
+        for(var i=0; i< items.length; i++) {
+          if (items[i].style.display != "none") {
+            items[i].style.display = "none";
+          }
+        }
+
+        document.getElementById(id).style.display = "inline";
       }
+      document.addEventListener("DOMContentLoaded", function(){
+        var anchors = document.getElementsByTagName("a");
+        for (var i=0; i< anchors.length; i++ ) {
+          var current = anchors[i];
+          current.addEventListener('click', clickHandler, false);
+        }
+      });
+
     </script>
   </head>
   <body onload="myfunc()">
     <div id="sidebar" style="float:left;width:150px">
       <ul>
-        <li><a href="#cat1"> cat1</a></li>
-        <li><a href="#cat2">cat2</a></li>
-        <li><a href="">cat3</a></li>
-        <li><a href="">cat4</a></li>
-        <li><a href="">cat5</a></li>
-        <li><a href="">cat6</a></li>
+        <li><a href="#" data-href="cat1"> cat1</a></li>
+        <li><a href="#" data-href="cat2">cat2</a></li>
+        <li><a href="#" data-href="cat3">cat3</a></li>
+        <li><a href="#" data-href="cat4">cat4</a></li>
+        <li><a href="javascript:void(0)" data-href="cat5">cat5</a></li>
+        <li><a href="#" data-href="cat6">cat6</a></li>
       </ul>
     </div>
-    <section id="displayarea" style="margin-left:150px"></section>
+    <section id="container">
+      <div id="cat1">
+        <h1 id="cat1_name"></h1>
+        <img src="cat.jpg"/>
+        <span id="counter1">0 times</span>
+      </div>
+      <div id="cat2">
+        <h2 id="cat2_name"></h2>
+        <img src="cat2.jpg"/>
+        <span id="counter2">0 times</span>
+      </div>
+       <div id="cat3">
+        <h2 id="cat3_name"></h2>
+        <img src="cat3.jpg"/>
+        <span id="counter3">0 times</span>
+      </div>
+       <div id="cat4">
+        <h2 id="cat4_name"></h2>
+        <img src="cat4.jpg"/>
+        <span id="counter4">0 times</span>
+      </div>
+       <div id="cat5">
+        <h2 id="cat5_name"></h2>
+        <img src="cat5.jpg"/>
+        <span id="counter5">0 times</span>
+      </div>
+       <div id="cat6">
+        <h2 id="cat6_name"></h2>
+        <img src="cat6.jpg"/>
+        <span id="counter6">0 times</span>
+      </div>
+    </section>
     
-    <a name="cat1">
-    <div id="cat1">
-      <h1 id="cat1_name"></h1>
-      <img src="cat.jpg"/>
-      <span id="counter1">0 times</span>
-    </div>
-  </a>
-  <a name="cat2">
-    <div id="cat2">
-      <h2 id="cat2_name"></h2>
-      <img src="cat2.jpg"/>
-      <span id="counter2">0 times</span>
-    </div>
-  </a>
+    
   </body>
 </html>
